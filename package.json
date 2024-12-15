@@ -9,9 +9,12 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:ui"
+  ],
   "main": "./out/extension.js",
   "contributes": {
+    "completionItemProvider": "ui",
     "commands": [
       {
         "command": "unigineuisnippets.helloWorld",
