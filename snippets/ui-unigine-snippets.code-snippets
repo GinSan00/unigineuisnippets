@@ -1,0 +1,7 @@
+{
+    "Window Snippet": {
+      "prefix": "win",
+      "body": "window",
+      "description": "Inserts the word 'window'"
+    }
+  }

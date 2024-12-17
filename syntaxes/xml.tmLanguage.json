@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "MyXMLLanguage",
+  "scopeName": "source.myxml",
+  "fileTypes": ["ui", "local", "rc"],
+  "patterns": [
+    {
+      "include": "#tag"
+    },
+    {
+      "include": "#attribute"
+    }
+  ],
+  "repository": {
+    "tag": {
+      "begin": "<\\s*(\\w+)",
+      "end": "\\s*>",
+      "beginCaptures": {
+        "0": { "name": "meta.tag.myxml" },
+        "1": { "name": "entity.name.tag.myxml" }
+      },
+      "endCaptures": {
+        "0": { "name": "meta.tag.myxml" }
+      },
+      "contentName": "meta.content.myxml",
+      "patterns": [
+        { "include": "#attribute" }
+      ]
+    },
+    "attribute": {
+      "match": "\\b([a-zA-Z_][a-zA-Z0-9_-]*)\\s*=\\s*(?:\"((?:[^\\\\\"]|\\\\.)*)\"|'((?:[^\\\\']|\\\\.)*)')",
+      "captures": {
+        "1": { "name": "entity.other.attribute-name.myxml" },
+        "2": { "name": "string.quoted.double.myxml" },
+        "3": { "name": "string.quoted.single.myxml" }
+      }
+    }
+  }
+}

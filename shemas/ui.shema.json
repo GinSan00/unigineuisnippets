@@ -1,0 +1,642 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "UI Schema",
+    "type": "object",
+    "properties": {
+      "ui": {
+        "type": "object",
+        "properties": {
+          "contents": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                { "$ref": "#/definitions/containers" },
+                { "$ref": "#/definitions/widgets" },
+                { "$ref": "#/definitions/other_tags" }
+              ]
+            }
+          }
+        },
+        "required": ["contents"],
+        "additionalProperties": false
+      }
+    },
+    "definitions": {
+      "common_attributes": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "export": {
+            "type": "string"
+          },
+          "next": {
+            "type": "string"
+          },
+          "align": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "string"
+          },
+          "hidden": {
+            "type": "string"
+          },
+          "pos_x": {
+            "type": "string"
+          },
+          "pos_y": {
+            "type": "string"
+          },
+          "width": {
+            "type": "string"
+          },
+          "height": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string"
+          }
+        },
+        
+        "additionalProperties": true
+      },
+      "text_attributes": {
+        "type": "object",
+        "properties": {
+          "rich": {
+            "type": "string"
+          },
+          "face": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "permanent": {
+            "type": "string"
+          },
+          "outline": {
+            "type": "string"
+          },
+          "wrap": {
+            "type": "string"
+          },
+          "hspacing": {
+            "type": "string"
+          },
+          "vspacing": {
+            "type": "string"
+          },
+          "hoffset": {
+            "type": "string"
+          },
+          "translate": {
+            "type": "string"
+          },
+          "voffset": {
+            "type": "string"
+          }
+        },
+        
+        "additionalProperties": true
+      },
+      "containers": {
+        "anyOf": [
+          { "$ref": "#/definitions/window" },
+          { "$ref": "#/definitions/vbox" },
+          { "$ref": "#/definitions/hbox" },
+          { "$ref": "#/definitions/vpaned" },
+          { "$ref": "#/definitions/hpaned" },
+          { "$ref": "#/definitions/gridbox" },
+          { "$ref": "#/definitions/groupbox" },
+          { "$ref": "#/definitions/tabbox" },
+          { "$ref": "#/definitions/scrollbox" },
+          { "$ref": "#/definitions/dialog" }
+        ]
+      },
+      "widgets": {
+        "anyOf": [
+          { "$ref": "#/definitions/button" },
+          { "$ref": "#/definitions/tooltip" },
+          { "$ref": "#/definitions/canvas" },
+          { "$ref": "#/definitions/checkbox" },
+          { "$ref": "#/definitions/combobox" },
+          { "$ref": "#/definitions/editline" },
+          { "$ref": "#/definitions/edittext" },
+          { "$ref": "#/definitions/hscroll" },
+          { "$ref": "#/definitions/vscroll" },
+          { "$ref": "#/definitions/hslider" },
+          { "$ref": "#/definitions/hspacer" },
+          { "$ref": "#/definitions/vslider" },
+          { "$ref": "#/definitions/vspacer" },
+          { "$ref": "#/definitions/icon" },
+          { "$ref": "#/definitions/label" },
+          { "$ref": "#/definitions/sprite" },
+          { "$ref": "#/definitions/listbox" },
+          { "$ref": "#/definitions/menubox" },
+          { "$ref": "#/definitions/spinbox" },
+          { "$ref": "#/definitions/treebox" },
+          { "$ref": "#/definitions/menubar" }
+        ]
+      },
+      "other_tags": {
+        "anyOf": [
+          { "$ref": "#/definitions/align" },
+          { "$ref": "#/definitions/reference" },
+          { "$ref": "#/definitions/text" },
+          { "$ref": "#/definitions/include" }
+        ]
+      },
+      "window": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+              "contents": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    { "$ref": "#/definitions/containers" },
+                    { "$ref": "#/definitions/widgets" },
+                    { "$ref": "#/definitions/other_tags" }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "vbox": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+              "contents": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    { "$ref": "#/definitions/containers" },
+                    { "$ref": "#/definitions/widgets" },
+                    { "$ref": "#/definitions/other_tags" }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "hbox": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+              "contents": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    { "$ref": "#/definitions/containers" },
+                    { "$ref": "#/definitions/widgets" },
+                    { "$ref": "#/definitions/other_tags" }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "vpaned": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+              "contents": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    { "$ref": "#/definitions/containers" },
+                    { "$ref": "#/definitions/widgets" },
+                    { "$ref": "#/definitions/other_tags" }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "hpaned": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+              "contents": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    { "$ref": "#/definitions/containers" },
+                    { "$ref": "#/definitions/widgets" },
+                    { "$ref": "#/definitions/other_tags" }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "gridbox": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+              "contents": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    { "$ref": "#/definitions/containers" },
+                    { "$ref": "#/definitions/widgets" },
+                    { "$ref": "#/definitions/other_tags" }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "groupbox": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+              "contents": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    { "$ref": "#/definitions/containers" },
+                    { "$ref": "#/definitions/widgets" },
+                    { "$ref": "#/definitions/other_tags" }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "tabbox": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+              "contents": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    { "$ref": "#/definitions/containers" },
+                    { "$ref": "#/definitions/widgets" },
+                    { "$ref": "#/definitions/other_tags" }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "scrollbox": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+              "contents": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    { "$ref": "#/definitions/containers" },
+                    { "$ref": "#/definitions/widgets" },
+                    { "$ref": "#/definitions/other_tags" }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "dialog": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+              "contents": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    { "$ref": "#/definitions/containers" },
+                    { "$ref": "#/definitions/widgets" },
+                    { "$ref": "#/definitions/other_tags" }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+
+      "tooltip": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "button": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "canvas": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "checkbox": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "combobox": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "editline": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "edittext": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "hscroll": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "hslider": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "hspacer": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "icon": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "label": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "listbox": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "menubar": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "menubox": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "spinbox": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "sprite": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "treebox": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "vscroll": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "vslider": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "vspacer": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "align": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "reference": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "text": {
+        "allOf": [
+          { "$ref": "#/definitions/text_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "include": {
+        "allOf": [
+          { "$ref": "#/definitions/common_attributes" },
+          {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  }

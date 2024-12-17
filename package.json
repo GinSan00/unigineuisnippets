@@ -1,44 +1,63 @@
 {
-  "name": "unigineuisnippets",
-  "displayName": "unigine ui snippets",
-  "description": "snippets for unigine ui files",
+  "name": "unigine-ui-snippets",
+  "displayName": "Unigine UI Snippets",
+  "description": "Provides support for custom XML-like languages in .ui, .local, and .rc files.",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.95.0"
+    "vscode": "^1.73.0"
   },
-  "categories": [
-    "Other"
-  ],
+  "categories": ["Programming Languages", "Snippets"],
   "activationEvents": [
-    "onLanguage:ui"
+    "onLanguage:ui",
+    "onLanguage:local",
+    "onLanguage:rc"
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "completionItemProvider": "ui",
-    "commands": [
-      {
-        "command": "unigineuisnippets.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+    "languages": [{
+      "id": "ui",
+      "aliases": ["UI"],
+      "extensions": [".ui"],
+      "configuration": "./schemas/ui.schema.json"
+    }, {
+      "id": "local",
+      "aliases": ["Local"],
+      "extensions": [".local"],
+      "configuration": "./schemas/local.schema.json"
+    }, {
+      "id": "rc",
+      "aliases": ["RC"],
+      "extensions": [".rc"],
+      "configuration": "./schemas/rc.schema.json"
+    }],
+    "grammars": [{
+      "language": "ui",
+      "scopeName": "source.ui",
+      "path": "./syntaxes/xml.tmLanguage"
+    }, {
+      "language": "local",
+      "scopeName": "source.local",
+      "path": "./syntaxes/xml.tmLanguage"
+    }, {
+      "language": "rc",
+      "scopeName": "source.rc",
+      "path": "./syntaxes/xml.tmLanguage"
+    }]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
+    "watch": "tsc -w -p ./",
+    "prettier": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\""
   },
   "devDependencies": {
-    "@types/vscode": "^1.95.0",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "20.x",
-    "@typescript-eslint/eslint-plugin": "^8.17.0",
-    "@typescript-eslint/parser": "^8.17.0",
-    "eslint": "^9.16.0",
-    "typescript": "^5.7.2",
-    "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@types/vscode": "^1.73.0",
+    "@types/glob": "^7.1.4",
+    "@types/mocha": "^9.1.1",
+    "typescript": "^4.8.4",
+    "vscode-test": "^1.6.2",
+    "eslint": "^8.23.1",
+    "prettier": "^2.7.1"
   }
 }
