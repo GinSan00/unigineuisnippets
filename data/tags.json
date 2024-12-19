@@ -1,0 +1,173 @@
+{
+  "attribute_lists": {
+    "common_attributes": ["name", "export", "next", "align", "enabled","hidden","pos_x","pos_y","width","height","reference"],
+    "text_attributes": ["rich", "face", "size","color","permanent","outline","wrap","hspacing","vspacing","hoffset","voffset","translate"],
+    "image_attributes": ["src", "alt"]
+  },
+  "categories": {
+    "containers": [
+      {
+        "name": "window",
+        "description": "Контейнерный элемент для группировки других элементов.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "hbox",
+        "description": "Контейнерный элемент для группировки других элементов.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "vpaned",
+        "description": "Контейнерный элемент для группировки других элементов.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "hpaned",
+        "description": "Контейнерный элемент для группировки других элементов.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "gridbox",
+        "description": "Контейнерный элемент для группировки других элементов.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "groupbox",
+        "description": "Контейнерный элемент для группировки других элементов.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "tabbox",
+        "description": "Контейнерный элемент для группировки других элементов.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "scrollbox",
+        "description": "Контейнерный элемент для группировки других элементов.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "dialog",
+        "description": "Контейнерный элемент для группировки других элементов.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "vbox",
+        "description": "Раздел контента страницы.",
+        "used_attribute_lists": ["common_attributes"]
+      }
+    ],
+    "widgets": [
+      {
+        "name": "button",
+        "description": "Кнопка для взаимодействия с пользователем.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "tooltip",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "canvas",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "checkbox",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "combobox",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "editline",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "edittext",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "hscroll",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "vscroll",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "hslider",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "vslider",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "hspacer",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "vspacer",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "icon",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes", "image_attributes"]
+      },
+      {
+        "name": "label",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "sprite",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes", "image_attributes"]
+      },
+      {
+        "name": "listbox",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "menubox",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "spinbox",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "menubar",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes"]
+      },
+      {
+        "name": "text",
+        "description": "Поле ввода текста.",
+        "used_attribute_lists": ["common_attributes", "text_attributes"]
+      },
+      {
+        "name": "treebox",
+        "description": "Элемент для вставки изображений.",
+        "used_attribute_lists": ["common_attributes"]
+      }
+    ]
+  }
+}

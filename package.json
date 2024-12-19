@@ -14,35 +14,26 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "languages": [{
-      "id": "ui",
-      "aliases": ["UI"],
-      "extensions": [".ui"],
-      "configuration": "./schemas/ui.schema.json"
-    }, {
-      "id": "local",
-      "aliases": ["Local"],
-      "extensions": [".local"],
-      "configuration": "./schemas/local.schema.json"
-    }, {
-      "id": "rc",
-      "aliases": ["RC"],
-      "extensions": [".rc"],
-      "configuration": "./schemas/rc.schema.json"
-    }],
-    "grammars": [{
-      "language": "ui",
-      "scopeName": "source.ui",
-      "path": "./syntaxes/xml.tmLanguage"
-    }, {
-      "language": "local",
-      "scopeName": "source.local",
-      "path": "./syntaxes/xml.tmLanguage"
-    }, {
-      "language": "rc",
-      "scopeName": "source.rc",
-      "path": "./syntaxes/xml.tmLanguage"
-    }]
+    "languages": [
+      {
+        "id": "ui",
+        "aliases": [
+          "Ui",
+          "ui"
+        ],
+        "extensions": [
+          ".ui"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ui",
+        "scopeName": "source.ui",
+        "path": "./syntaxes/xml.tmLanguage.json"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
