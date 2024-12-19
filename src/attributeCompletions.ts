@@ -4,14 +4,14 @@ import { TagsParser } from './parser';
 const parser = new TagsParser();
 
 export function provideAttributeCompletions(document: TextDocument, position: Position): any[] {
-  const linePrefix = document.lineAt(position).text.substr(0, position.character);
-  const isInsideTag = /<[a-zA-Z]+/.test(linePrefix); // Проверяем, находимся ли внутри тега
-
+  const line = document.lineAt(position);
+  const prefix = line.text.substring(0, position.character);
   let items: any[] = [];
 
-  if (isInsideTag) {
+  // Проверяем, находится ли курсор внутри тега
+  if (prefix.includes('<') && !prefix.includes('>')) {
     // Если внутри тега, предлагаем атрибуты
-    const tagName = linePrefix.match(/<([a-zA-Z]+)/)?.[1]; // Извлекаем имя тега
+    const tagName = prefix.match(/<([a-zA-Z]+)/)?.[1]; // Извлекаем имя тега
     const tag = parser.findTagByName(tagName);
 
     if (tag) {
@@ -19,7 +19,7 @@ export function provideAttributeCompletions(document: TextDocument, position: Po
       items = attributes.map((attr) => ({
         label: attr,
         kind: CompletionItemKind.Property,
-        insertText: `${attr}=`
+        insertText: `${attr}=""`
       }));
     }
   }

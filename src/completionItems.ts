@@ -1,39 +1,56 @@
 import { CompletionItemKind, Position, Range, TextDocument } from 'vscode';
+import * as vscode from 'vscode';
 import { TagsParser } from './parser';
 
 const parser = new TagsParser();
 
 export function provideCompletionItems(document: TextDocument, position: Position): any[] {
-  const linePrefix = document.lineAt(position).text.substr(0, position.character);
-  const isInsideTag = /<[a-zA-Z]+/.test(linePrefix); // Проверяем, находимся ли внутри тега
+  const lineText = document.lineAt(position).text;
+  const linePrefix = lineText.substring(0, position.character);
 
-  let items: any[] = [];
-
-  if (isInsideTag) {
-    // Если внутри тега, предлагаем атрибуты
-    const tagName = linePrefix.match(/<([a-zA-Z]+)/)?.[1]; // Извлекаем имя тега
-    const tag = parser.findTagByName(tagName);
-
-    if (tag) {
-      const attributes = parser.getAllAttributesForTag(tag);
-      items = attributes.map((attr) => ({
-        label: attr,
-        kind: CompletionItemKind.Property,
-        insertText: `${attr}=`
-      }));
-    }
-  } else {
-    // Предлагем теги
+  if (!linePrefix.startsWith('<')) {
+    // Предложим только открывающие теги
     const categories = parser.getCategories();
-    items = categories.flatMap((category) => {
+    const items = categories.flatMap((category) => {
       const tags = parser.getTagsInCategory(category);
       return tags?.map((tag) => ({
-        label: `<${tag.name}>`,
+        label: `${tag.name}`,
         kind: CompletionItemKind.Class,
-        documentation: tag.description
+        documentation: tag.description,
+        insertText: `<${tag.name}></${tag.name}>`,
+        textEdit: vscode.TextEdit.insert(
+          new Position(position.line, position.character),
+          `<${tag.name}></${tag.name}>`
+        )
       })) || [];
     });
+    
+    return items;
+  }
+  else{
+    const tagNameStartIndex = linePrefix.lastIndexOf('<') + 1;
+    const tagNameEndIndex = linePrefix.indexOf('>', tagNameStartIndex);
+    const potentialTagName = linePrefix.substring(tagNameStartIndex, tagNameEndIndex === -1 ? undefined : tagNameEndIndex);
+  
+      const categories = parser.getCategories();
+      const items = categories.flatMap((category) => {
+        const tags = parser.getTagsInCategory(category);
+        return tags?.filter((tag) => tag.name.startsWith(potentialTagName)).map((tag) => ({
+          label: `${tag.name}`,
+          kind: CompletionItemKind.Class,
+          documentation: tag.description,
+          insertText: `${tag.name}></${tag.name}>`,
+          textEdit: vscode.TextEdit.replace(
+            new Range(new Position(position.line, tagNameStartIndex), position),
+            `${tag.name}></${tag.name}>`
+          )
+        })) || [];
+      });
+  
+      return items;
+  // Если уже введён символ '<' — предложим закрывающий тег
+
   }
 
-  return items;
+  return [];
 }

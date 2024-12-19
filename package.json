@@ -3,10 +3,15 @@
   "displayName": "Unigine UI Snippets",
   "description": "Provides support for custom XML-like languages in .ui, .local, and .rc files.",
   "version": "0.0.1",
+  "publisher": "GinSan",
   "engines": {
     "vscode": "^1.73.0"
   },
   "categories": ["Programming Languages", "Snippets"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GinSan00/unigineuisnippets.git"
+},
   "activationEvents": [
     "onLanguage:ui",
     "onLanguage:local",
@@ -24,13 +29,57 @@
         "extensions": [
           ".ui"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration.json",
+        "icon": {
+           "light": "./icons/ui.png",
+           "dark": "./icons/ui.png"
+         }
+      },
+      {
+        "id": "local",
+        "aliases": [
+          "Local",
+          "local"
+        ],
+        "extensions": [
+          ".local"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+           "light": "./icons/local.png",
+           "dark": "./icons/local.png"
+         }
+      },
+      {
+        "id": "rc",
+        "aliases": [
+          "RC",
+          "rc"
+        ],
+        "extensions": [
+          ".rc"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+           "light": "./icons/rc.png",
+           "dark": "./icons/rc.png"
+         }
       }
     ],
     "grammars": [
       {
         "language": "ui",
         "scopeName": "source.ui",
+        "path": "./syntaxes/xml.tmLanguage.json"
+      },
+      {
+        "language": "local",
+        "scopeName": "source.local",
+        "path": "./syntaxes/xml.tmLanguage.json"
+      },
+      {
+        "language": "rc",
+        "scopeName": "source.rc",
         "path": "./syntaxes/xml.tmLanguage.json"
       }
     ]
